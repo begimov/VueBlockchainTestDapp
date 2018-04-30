@@ -34,4 +34,9 @@ contract TestVoter{
         Assert.equal(name, "NewProposal 2", "");
         Assert.isTrue(state, "");
     }
+
+    function testVote() public {
+        Assert.isTrue(voter.vote(1), "");
+        Assert.isFalse(voter.vote(1), "");
+    }
 }
