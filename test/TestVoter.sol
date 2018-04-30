@@ -39,4 +39,10 @@ contract TestVoter{
         Assert.isTrue(voter.vote(1), "");
         Assert.isFalse(voter.vote(1), "");
     }
+
+    function testProposalTotalVotes() public {
+        voter.vote(1);
+        voter.vote(1);
+        Assert.equal(voter.getProposalTotalVotes(1), 1, "");
+    }
 }

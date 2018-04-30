@@ -4,6 +4,7 @@ contract Voter {
     struct Proposal {
         bytes32 name;
         bool state;
+        uint totalVotes;
         mapping (address => uint) votes;
     }
 
@@ -16,7 +17,8 @@ contract Voter {
     function addProposal(bytes32 name) public {
         proposals.push(Proposal({
             name: name,
-            state: true
+            state: true,
+            totalVotes: 0
         }));
     }
 
@@ -28,6 +30,10 @@ contract Voter {
         return proposals[id].name;
     }
 
+    function getProposalTotalVotes(uint id) public returns (uint) {
+        return proposals[id].totalVotes;
+    }
+
     function getProposal(uint id) public returns (bytes32, bool) {
         return (proposals[id].name, proposals[id].state);
     }
@@ -35,6 +41,7 @@ contract Voter {
     function vote(uint id) public returns (bool) {
         if (proposals[id].votes[msg.sender] != 1) {
             proposals[id].votes[msg.sender] = 1;
+            proposals[id].totalVotes++;
             return true;
         }
         return false;
