@@ -1,16 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>{{ score }}</h1>
-    <button @click.prevent="increment">INCREMENT</button>
-    <button @click.prevent="get">GET</button>
+  <div>
+    <h1>Coin</h1>
   </div>
 </template>
 
 <script>
-import Voting from '../../contracts/Voting.sol';
+import Coin from '../../contracts/Coin.sol';
 
 export default {
-  name: 'HelloWorld',
+  name: 'Coin',
   data () {
     return {
       score: 0
