@@ -65,10 +65,10 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       },
-      { 
-        test: /\.sol/,
-        loader: 'truffle-solidity-loader' 
-      }
+      // { 
+      //   test: /\.sol/,
+      //   loader: 'truffle-solidity-loader' 
+      // }
     ]
   },
   node: {

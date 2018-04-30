@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <Voting/>
-    <Coin/>
+    <Voter/>
   </div>
 </template>
 
 <script>
-import Voting from './components/Voting'
-import Coin from './components/Coin'
+import Voter from './components/Voter'
 
 export default {
   name: 'App',
   components: {
-    Voting,
-    Coin
+    Voter
   }
 }
 </script>
