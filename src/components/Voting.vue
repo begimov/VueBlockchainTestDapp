@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>{{ score }}</h1>
+    <h1>Voting</h1>
+    <h2>{{ score }}</h2>
     <button @click.prevent="increment">INCREMENT</button>
     <button @click.prevent="get">GET</button>
   </div>

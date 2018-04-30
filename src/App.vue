@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Voting/>
+    <Coin/>
   </div>
 </template>
 
