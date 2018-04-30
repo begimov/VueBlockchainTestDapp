@@ -1,41 +1,46 @@
 <template>
   <div>
-    <h1>Voting</h1>
-    <!-- <h2>{{ score }}</h2>
-    <button @click.prevent="increment">INCREMENT</button>
-    <button @click.prevent="get">GET</button> -->
+    <h1>Voter</h1>
+    <h2>Total proposals: {{ proposalsCount }}</h2>
+    <button @click.prevent="get">Refresh</button>
+    <button @click.prevent="addProposal">Add proposal</button>
   </div>
 </template>
 
 <script>
 // import Voting from '../../contracts/Voter.sol';
+const voter = require('../../build/contracts/Voter.json')
+import TruffleContract from 'truffle-contract'
 
 export default {
-  name: 'Voting',
+  name: 'Voter',
   data () {
     return {
-      // score: 0
+      voter: null,
+      proposalsCount: 0
     }
   },
   methods: {
-    // increment () {
-    //   Voting.deployed().increment({from: web3.eth.accounts[0]}).then((result) => {
-    //     console.log(result)
-    //     this.get()
-    //   });
-    // },
-    // get () {
-    //   Voting.deployed().getCounter.call().then((result) => {
-    //     this.score = result.toNumber()
-    //   });
-    // }
+    addProposal () {
+      this.voter.deployed().then((instance) => {
+        console.log(instance)
+        instance.addProposal('Name1', {from: web3.eth.accounts[0]})
+        }).then((res) => {
+          console.log(res)
+        });
+    },
+    get () {
+      this.voter.deployed().then((instance) => {
+        instance.countProposals.call().then((res) => {
+          this.proposals = res.toNumber()
+          console.log(this.proposalsCount)
+        })
+      })
+    }
   },
   mounted () {
-    // Voting.setProvider(window.web3.currentProvider)
-    // this.get()
-    $.getJSON("test.json", function(json) {
-        console.log(json); // this will show the info it in firebug console
-    });
+    this.voter = TruffleContract(voter)
+    this.voter.setProvider(window.web3.currentProvider)
   }
 }
 </script>

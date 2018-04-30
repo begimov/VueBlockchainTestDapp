@@ -17,6 +17,12 @@ window.addEventListener('load', function() {
 
 Vue.config.productionTip = false
 
+try {
+  window.$ = window.jQuery = require('jquery');
+  // window.Popper = require('popper.js').default;
+  // require('bootstrap');
+} catch (e) {}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

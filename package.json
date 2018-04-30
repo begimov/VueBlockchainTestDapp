@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "jquery": "^3.3.1",
     "truffle": "^4.1.7",
     "vue": "^2.5.2"
   },
@@ -40,6 +41,7 @@
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
+    "truffle-contract": "^3.0.5",
     "truffle-solidity-loader": "0.0.8",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
