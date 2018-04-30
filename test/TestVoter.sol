@@ -8,12 +8,24 @@ contract TestVoter{
     Voter voter = Voter(DeployedAddresses.Voter());
 
     function testInitialState() public {
-        Assert.equal(voter.countProposals(), 0, "Initial proposals total count should be 0");
+        Assert.equal(voter.countProposals(), 0, "Initial proposals count should be 0");
     }
 
-    function testAddingNewProposal() public {
-        voter.addProposal("NewProposal");
+    function testAddProposal() public {
+        voter.addProposal("NewProposal 1");
 
-        Assert.equal(voter.countProposals(), 1, "Proposals total count should be 1");
+        Assert.equal(voter.countProposals(), 1, "");
+    }
+
+    function testGetProposalState() public {
+        voter.addProposal("NewProposal 2");
+
+        Assert.isTrue(voter.getProposalState(1), "");
+    }
+
+    function testGetProposalName() public {
+        voter.addProposal("NewProposal 3");
+
+        Assert.equal(voter.getProposalName(2), "NewProposal 3", "");
     }
 }

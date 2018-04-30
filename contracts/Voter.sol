@@ -2,7 +2,8 @@ pragma solidity ^0.4.8;
 
 contract Voter {
     struct Proposal {
-        string name;
+        bytes32 name;
+        bool state;
     }
 
     Proposal[] public proposals;
@@ -11,9 +12,18 @@ contract Voter {
         return proposals.length;
     }
 
-    function addProposal(string name) public {
+    function addProposal(bytes32 name) public {
         proposals.push(Proposal({
-            name: name
+            name: name,
+            state: true
         }));
+    }
+
+    function getProposalState(uint id) public returns (bool) {
+        return proposals[id].state;
+    }
+
+    function getProposalName(uint id) public returns (bytes32) {
+        return proposals[id].name;
     }
 }
