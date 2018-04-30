@@ -4,7 +4,7 @@ contract Voting {
     uint public counter;
 
     function Voting() public {
-        counter = 1;
+        counter = 0;
     }
 
     function increment() public {
