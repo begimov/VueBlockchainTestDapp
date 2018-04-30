@@ -4,6 +4,7 @@
     <h2>Total proposals: {{ proposalsCount }}</h2>
     <button @click.prevent="get">Refresh</button>
     <button @click.prevent="addProposal">Add proposal</button>
+    <button @click.prevent="getProposalName">Get proposal name</button>
   </div>
 </template>
 
@@ -21,19 +22,26 @@ export default {
     }
   },
   methods: {
+    getProposalName () {
+      this.voter.deployed().then((instance) => {
+          instance.getProposalName.call(2)
+            .then((res) => {
+              console.log(res)
+            })
+        });
+    },
     addProposal () {
       this.voter.deployed().then((instance) => {
-        console.log(instance)
-        instance.addProposal('Name1', {from: web3.eth.accounts[0]})
-        }).then((res) => {
-          console.log(res)
+          instance.addProposal('Name1', {from: web3.eth.accounts[0]})
+            .then((res) => {
+              console.log(res)
+            })
         });
     },
     get () {
       this.voter.deployed().then((instance) => {
-        instance.countProposals.call().then((res) => {
-          this.proposals = res.toNumber()
-          console.log(this.proposalsCount)
+        return instance.countProposals.call().then((res) => {
+          this.proposalsCount = res.toNumber()
         })
       })
     }
