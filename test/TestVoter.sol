@@ -28,4 +28,10 @@ contract TestVoter{
 
         Assert.equal(voter.getProposalName(2), "NewProposal 3", "");
     }
+
+    function testGetProposal() public {
+        var (name, state) = voter.getProposal(1);
+        Assert.equal(name, "NewProposal 2", "");
+        Assert.isTrue(state, "");
+    }
 }

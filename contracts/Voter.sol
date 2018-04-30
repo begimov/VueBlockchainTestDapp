@@ -26,4 +26,8 @@ contract Voter {
     function getProposalName(uint id) public returns (bytes32) {
         return proposals[id].name;
     }
+
+    function getProposal(uint id) public returns (bytes32, bool) {
+        return (proposals[id].name, proposals[id].state);
+    }
 }
