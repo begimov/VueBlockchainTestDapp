@@ -10,4 +10,10 @@ contract Voter {
     function countProposals() public returns (uint) {
         return proposals.length;
     }
+
+    function addProposal(string name) public {
+        proposals.push(Proposal({
+            name: name
+        }));
+    }
 }

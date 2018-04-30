@@ -10,4 +10,10 @@ contract TestVoter{
     function testInitialState() public {
         Assert.equal(voter.countProposals(), 0, "Initial proposals total count should be 0");
     }
+
+    function testAddingNewProposal() public {
+        voter.addProposal("NewProposal");
+
+        Assert.equal(voter.countProposals(), 1, "Proposals total count should be 1");
+    }
 }
